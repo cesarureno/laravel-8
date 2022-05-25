@@ -31,4 +31,9 @@ class Company extends Model
         'comments',
         'corporate_id'
     ];
+
+    public function corporate()
+    {
+        return $this->belongsTo(Corporate::class);
+    }
 }

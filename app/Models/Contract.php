@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Contract extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'position',
+        'country',
+        'phone_number',
+        'mobile_phone_number',
+        'email',
+        'comments',
+        'corporate_id'
+    ];
 }
