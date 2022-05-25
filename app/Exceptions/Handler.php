@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Throwable;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -37,5 +40,27 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Convert a validation exception into a JSON response.
+     *
+     * @param  Request  $request
+     * @param ValidationException $exception
+     * @return JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception): JsonResponse
+    {
+        return response()->json([
+            'msg' => 'BAD',
+            'success' => false,
+            'data' => [
+                'msgError' => $exception->errors()
+            ],
+            'exception' => [
+                'msgError' => $exception->getMessage(),
+            ],
+            "time_exec" => microtime(true) - LARAVEL_START
+        ], $exception->status);
     }
 }
