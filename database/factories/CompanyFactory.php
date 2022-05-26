@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Company;
-use App\Models\Corporate;
+use App\Models\Corporation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CompanyFactory extends Factory
@@ -36,8 +36,8 @@ class CompanyFactory extends Factory
             'acta_url' => $this->faker->imageUrl(300, 300, 'acta'),
             'status' => $this->faker->boolean,
             'comments' => $this->faker->text,
-            'corporate_id' => function () {
-                return Corporate::find($this->faker->numberBetween(1, Corporate::count()))->id;
+            'corporation_id' => function () {
+                return Corporation::find($this->faker->numberBetween(1, Corporation::count()))->id;
             },
         ];
     }

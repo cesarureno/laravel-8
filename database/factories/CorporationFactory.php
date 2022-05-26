@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Corporate;
+use App\Models\Corporation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,7 +13,7 @@ class CorporationFactory extends Factory
      *
      * @var string
      */
-    protected $model = Corporate::class;
+    protected $model = Corporation::class;
 
     /**
      * Define the model's default state.

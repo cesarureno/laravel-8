@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Corporate;
+use App\Models\Corporation;
 use App\Models\Document;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,7 +17,7 @@ return new class extends Migration
     {
         Schema::create('corporate_document', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Corporate::class);
+            $table->foreignIdFor(Corporation::class);
             $table->foreignIdFor(Document::class);
             $table->string('file_url', 255);
         });

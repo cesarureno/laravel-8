@@ -28,6 +28,6 @@ class Contact extends Model
 
     public function corporate()
     {
-        return $this->belongsTo(Corporate::class);
+        return $this->belongsTo(Corporation::class);
     }
 }

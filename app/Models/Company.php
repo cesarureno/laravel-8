@@ -42,7 +42,7 @@ use Illuminate\Support\Carbon;
  * @property string $acta_url
  * @property string $comments
  * @property bool $status
- * @property int $coporate_id
+ * @property int $corporation_id
  *
  * @property-read Carbon $created_at
  * @property-read Carbon $updated_at
@@ -50,7 +50,7 @@ use Illuminate\Support\Carbon;
  *
  * @property-read string $full_name
  *
- * @property-read Corporate $corporate
+ * @property-read Corporation $corporation
  *
  */
 class Company extends Model
@@ -77,11 +77,11 @@ class Company extends Model
         'acta_url',
         'status',
         'comments',
-        'corporate_id'
+        'corporation_id'
     ];
 
-    public function corporate(): BelongsTo
+    public function corporation(): BelongsTo
     {
-        return $this->belongsTo(Corporate::class);
+        return $this->belongsTo(Corporation::class);
     }
 }
