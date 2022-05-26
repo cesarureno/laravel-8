@@ -96,7 +96,7 @@ jobs:
           DB_USER: root
           DB_PASSWORD: password
 
-        run: php artisan test
+        run: vendor/bin/phpunit --testdox
 
       - name: Execute Code Sniffer via phpcs
         run: |
