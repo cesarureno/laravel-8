@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 use Illuminate\Validation\ValidationException;
 
@@ -39,6 +40,20 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            return response()->json([
+                'msg' => 'BAD',
+                'success' => false,
+                'data' => [
+                    'msgError' => $e->getMessage(),
+                ],
+                'exception' => [
+                    'msgError' => $e->getMessage(),
+                ],
+                "time_exec" => microtime(true) - LARAVEL_START
+            ], 404);
         });
     }
 
