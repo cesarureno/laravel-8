@@ -7,8 +7,7 @@ on:
       - master
   pull_request:
     branches:
-      - main
-      - develop
+      - master
 
 jobs:
   laravel-tests:
@@ -21,7 +20,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE:  laravel
+          MYSQL_DATABASE: laravel
         ## map the "external" 33306 port with the "internal" 3306
         ports:
           - 3306:3306
