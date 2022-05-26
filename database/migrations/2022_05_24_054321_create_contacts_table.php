@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Corporate;
+use App\Models\Corporation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('mobile_phone_number', 12);
             $table->string('email', 45);
 
-            $table->foreignIdFor(Corporate::class);
+            $table->foreignIdFor(Corporation::class);
 
             $table->timestamps();
         });

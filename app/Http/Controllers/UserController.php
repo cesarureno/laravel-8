@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $users = User::all();
 
@@ -23,10 +23,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param UserRequest $request
+     * @return JsonResponse
      */
-    public function store(UserRequest $request)
+    public function store(UserRequest $request): JsonResponse
     {
         $user = User::create($request->all());
 
@@ -36,10 +36,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return JsonResponse
      */
-    public function show(User $user)
+    public function show(User $user): JsonResponse
     {
         return response()->success(['user' => $user]);
     }
@@ -47,11 +47,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UserRequest $request
+     * @param User $user
+     * @return JsonResponse
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request, User $user): JsonResponse
     {
         $user->update($request->all());
 
@@ -61,10 +61,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return JsonResponse
      */
-    public function destroy(User $user)
+    public function destroy(User $user): JsonResponse
     {
         $user->delete();
 

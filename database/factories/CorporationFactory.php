@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Corporate;
+use App\Models\Corporation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CorporateFactory extends Factory
+class CorporationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Corporate::class;
+    protected $model = Corporation::class;
 
     /**
      * Define the model's default state.
@@ -33,7 +33,7 @@ class CorporateFactory extends Factory
             'status' => $this->faker->randomElement([true, false]),
             'registered_at' => $this->faker->dateTimeBetween('-5 years', 'now'),
             'user_id' => function () {
-                return User::find($this->faker->numberBetween(1, User::count()))->id;
+                return User::factory()->create()->id;
             },
         ];
     }

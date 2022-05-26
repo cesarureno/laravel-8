@@ -48,7 +48,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @property-read string $full_name
  *
- * @property-read Corporate $corporate
+ * @property-read Corporation $corporate
  *
  */
 class User extends Authenticatable
@@ -105,7 +105,7 @@ class User extends Authenticatable
      */
     public function corporate(): HasOne
     {
-        return $this->hasOne(Corporate::class);
+        return $this->hasOne(Corporation::class);
     }
 
     /*******************************************************************************************
