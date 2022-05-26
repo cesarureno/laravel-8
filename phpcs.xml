@@ -1,0 +1,8 @@
+<rule ref="PSR1.Methods.CamelCapsMethodName">
+    <file>tests</file>
+    <exclude-pattern>./tests/*</exclude-pattern>
+</rule>
+<rule ref="Squiz.Scope.MethodScope">
+    <file>tests</file>
+    <exclude-pattern>./tests/*</exclude-pattern>
+</rule>

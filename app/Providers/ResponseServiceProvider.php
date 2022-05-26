@@ -15,7 +15,6 @@ class ResponseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**
@@ -25,6 +24,10 @@ class ResponseServiceProvider extends ServiceProvider
      */
     public function boot(ResponseFactory $factory)
     {
+        if (!defined('LARAVEL_START')) {
+            define('LARAVEL_START', microtime(true));
+        }
+
         Response::macro('success', function ($data = [], $code = 200, $message = 'OK') use ($factory) {
             return $factory->json([
                 'msg' => $message,

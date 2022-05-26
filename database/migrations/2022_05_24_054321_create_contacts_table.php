@@ -4,9 +4,8 @@ use App\Models\Corporate;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Company;
 
-class CreateContactsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -39,4 +38,4 @@ class CreateContactsTable extends Migration
     {
         Schema::dropIfExists('contacts');
     }
-}
+};
