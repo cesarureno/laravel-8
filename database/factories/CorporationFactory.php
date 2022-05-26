@@ -6,7 +6,7 @@ use App\Models\Corporate;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CorporateFactory extends Factory
+class CorporationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
