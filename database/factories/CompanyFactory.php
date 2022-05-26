@@ -30,14 +30,14 @@ class CompanyFactory extends Factory
             'city' => $this->faker->city,
             'neighborhood' => $this->faker->city,
             'address' => $this->faker->streetAddress,
-            'postal_code' => $this->faker->postcode,
-            'cfdi' => $this->randomElement(['G01', 'G02', 'G03']),
+            'postal_code' => substr($this->faker->postcode, 0, 5),
+            'cfdi' => $this->faker->randomElement(['G01', 'G02', 'G03']),
             'rfc_url' => $this->faker->imageUrl(300, 300, 'rfc'),
             'acta_url' => $this->faker->imageUrl(300, 300, 'acta'),
             'status' => $this->faker->boolean,
             'comments' => $this->faker->text,
             'corporation_id' => function () {
-                return Corporation::find($this->faker->numberBetween(1, Corporation::count()))->id;
+                return Corporation::factory()->create()->id;
             },
         ];
     }

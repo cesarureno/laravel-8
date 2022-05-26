@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Company;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -18,7 +17,7 @@ class CompanyTest extends TestCase
      * @test
      * @return void
      */
-    public function listOfUserCanBeRetrieved()
+    public function listOfCompaniesCanBeRetrieved()
     {
         $this->withExceptionHandling();
 
@@ -42,12 +41,12 @@ class CompanyTest extends TestCase
     }
 
     /**
-     * Create a new user test.
+     * Create a new company test.
      *
      * @test
      * @return void
      */
-    public function aUserCanBeCreated()
+    public function aCompanyCanBeCreated()
     {
         $this->withExceptionHandling();
 
@@ -71,12 +70,12 @@ class CompanyTest extends TestCase
     }
 
     /**
-     * Show a user test.
+     * Show a company test.
      *
      * @test
      * @return void
      */
-    public function aUserCanBeRetrieved()
+    public function aCompanyCanBeRetrieved()
     {
         $this->withExceptionHandling();
 
@@ -102,12 +101,12 @@ class CompanyTest extends TestCase
     }
 
     /**
-     * Update a new user test.
+     * Update a new company test.
      *
      * @test
      * @return void
      */
-    public function aUserCanBeUpdated()
+    public function aCompanyCanBeUpdated()
     {
         $this->withExceptionHandling();
 
@@ -135,12 +134,12 @@ class CompanyTest extends TestCase
     }
 
     /**
-     * Delete a user test.
+     * Delete a company test.
      *
      * @test
      * @return void
      */
-    public function aUserCanBeDeleted()
+    public function aCompanyCanBeDeleted()
     {
         $this->withExceptionHandling();
 

@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
-    public function index(): Response
+    public function index(): JsonResponse
     {
         $companies = Company::all();
 
@@ -25,9 +25,9 @@ class CompanyController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CompanyRequest $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function store(CompanyRequest $request): Response
+    public function store(CompanyRequest $request): JsonResponse
     {
         $company = Company::create($request->all());
 
@@ -38,9 +38,9 @@ class CompanyController extends Controller
      * Display the specified resource.
      *
      * @param Company $company
-     * @return Response
+     * @return JsonResponse
      */
-    public function show(Company $company): Response
+    public function show(Company $company): JsonResponse
     {
         return response()->success(['company' => $company]);
     }
@@ -50,9 +50,9 @@ class CompanyController extends Controller
      *
      * @param CompanyRequest $request
      * @param Company $company
-     * @return Response
+     * @return JsonResponse
      */
-    public function update(CompanyRequest $request, Company $company): Response
+    public function update(CompanyRequest $request, Company $company): JsonResponse
     {
         $company->update($request->all());
 
@@ -63,9 +63,9 @@ class CompanyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Company $company
-     * @return Response
+     * @return JsonResponse
      */
-    public function destroy(Company $company): Response
+    public function destroy(Company $company): JsonResponse
     {
         $company->delete();
 

@@ -33,7 +33,7 @@ class CorporationFactory extends Factory
             'status' => $this->faker->randomElement([true, false]),
             'registered_at' => $this->faker->dateTimeBetween('-5 years', 'now'),
             'user_id' => function () {
-                return User::find($this->faker->numberBetween(1, User::count()))->id;
+                return User::factory()->create()->id;
             },
         ];
     }
