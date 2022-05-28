@@ -6,6 +6,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CorporationController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,5 @@ Route::apiResource('companies', CompanyController::class);
 Route::apiResource('contacts', ContactController::class);
 Route::apiResource('contracts', ContractController::class);
 Route::apiResource('corporations', CorporationController::class);
+Route::apiResource('documents', DocumentController::class);
 Route::apiResource('users', UserController::class);
