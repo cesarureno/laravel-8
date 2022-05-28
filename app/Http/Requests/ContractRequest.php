@@ -24,7 +24,7 @@ class ContractRequest extends FormRequest
     public function rules()
     {
         return [
-            'stated_at' => 'required|date',
+            'started_at' => 'required|date',
             'ended_at' => 'required|date',
             'url' => 'required|string|max:255',
         ];

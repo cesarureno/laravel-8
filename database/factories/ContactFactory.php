@@ -16,7 +16,7 @@ class ContactFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'position' => $this->faker->jobTitle,
+            'position' => substr($this->faker->jobTitle, 0, 45),
             'comments' => $this->faker->text,
             'phone_number' => substr($this->faker->phoneNumber, 0, 12),
             'mobile_phone_number' => substr($this->faker->phoneNumber, 0, 12),

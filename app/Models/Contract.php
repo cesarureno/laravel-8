@@ -15,7 +15,7 @@ class Contract extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'stated_at',
+        'started_at',
         'ended_at',
         'corporation_id',
         'url',
