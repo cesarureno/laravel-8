@@ -40,7 +40,12 @@ class CorporationController extends Controller
      */
     public function show(Corporation $corporation): JsonResponse
     {
-        return response()->success(['corporation' => $corporation]);
+        return response()->success(['corporation' => $corporation->load(
+            'companies',
+            'contacts',
+            'contracts',
+            'corporationDocument'
+        )]);
     }
 
     /**

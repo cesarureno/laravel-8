@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -44,11 +45,43 @@ class Corporation extends Model
      *******************************************************************************************/
 
     /**
-     * Get the corporate associated with the user.
+     * Get the user associated with the comporate.
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the companies associated with the corporate.
+     */
+    public function companies(): HasMany
+    {
+        return $this->hasMany(Company::class);
+    }
+
+    /**
+     * Get the contacts associated with the corporate.
+     */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
+
+    /**
+     * Get the contracts associated with the corporate.
+     */
+    public function contracts(): HasMany
+    {
+        return $this->hasMany(Contract::class);
+    }
+
+    /**
+     * Get the corporation document associated with the corporate.
+     */
+    public function corporationDocument(): HasMany
+    {
+        return $this->hasMany(CorporationDocument::class);
     }
 
     /*******************************************************************************************
