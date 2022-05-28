@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('stated_at');
             $table->dateTime('ended_at')->nullable();
-            $table->dateTime('url')->nullable();
+            $table->string('url')->nullable();
 
             $table->foreignIdFor(Corporation::class);
         });

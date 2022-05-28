@@ -15,13 +15,16 @@ class Contract extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'position',
-        'country',
-        'phone_number',
-        'mobile_phone_number',
-        'email',
-        'comments',
-        'corporate_id'
+        'stated_at',
+        'ended_at',
+        'corporation_id',
+        'url',
     ];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }

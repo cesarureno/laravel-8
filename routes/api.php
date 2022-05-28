@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CorporationController;
+use App\Http\Controllers\ContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\CorporationController;
 |
 */
 
-Route::apiResource('users', UserController::class);
 Route::apiResource('companies', CompanyController::class);
+Route::apiResource('contracts', ContractController::class);
 Route::apiResource('corporations', CorporationController::class);
+Route::apiResource('users', UserController::class);
