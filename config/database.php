@@ -144,4 +144,9 @@ return [
 
     ],
 
+    'backup' => [
+        'tables' => env('BACKUP_TABLES'),
+        'mode' => env('BACKUP_MODE', 'both'),
+    ]
+
 ];
