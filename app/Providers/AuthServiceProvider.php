@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 
@@ -27,7 +28,18 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         if (! $this->app->routesAreCached()) {
-            Passport::routes();
+            //Passport::routes();
         }
+
+
+        Passport::tokensCan([
+            'corporations' => 'Corporaciones',
+            'companies' => 'Companies',
+            'contracts' => 'Contracts',
+            'contacts' => 'Contacts',
+            'documents' => 'Documents',
+            'corporation-documents' => 'Corporation Documents',
+            'users' => 'Usuarios',
+        ]);
     }
 }
