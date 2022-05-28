@@ -37,5 +37,17 @@ class ResponseServiceProvider extends ServiceProvider
                 'time_execution' => microtime(true) - LARAVEL_START,
             ], $code);
         });
+
+        Response::macro('error', function ($data = [], $code = 200, $message = 'OK') use ($factory) {
+            return $factory->json([
+                'msg' => $message,
+                'success' => false,
+                'data' => $data,
+                'exceptions' => [
+                    'msgError' => ''
+                ],
+                'time_execution' => microtime(true) - LARAVEL_START,
+            ], $code);
+        });
     }
 }
