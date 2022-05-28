@@ -75,7 +75,7 @@ class UserController extends Controller
 
     public function backupDatabase()
     {
-        if(config('database.backup.mode') == 'both' || config('database.backup.mode') == 'manual') {
+        if (config('database.backup.mode') == 'both' || config('database.backup.mode') == 'manual') {
             Artisan::call('database:backup');
 
             return response()->success(['message' => 'Database backup created successfully']);
