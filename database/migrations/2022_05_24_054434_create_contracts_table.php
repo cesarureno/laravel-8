@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('stated_at');
+            $table->dateTime('started_at');
             $table->dateTime('ended_at')->nullable();
             $table->string('url')->nullable();
 

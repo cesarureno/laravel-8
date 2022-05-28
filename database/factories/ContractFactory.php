@@ -23,7 +23,7 @@ class ContractFactory extends Factory
     public function definition()
     {
         return [
-            'stated_at' => $this->faker->dateTimeBetween('-2 year', 'now'),
+            'started_at' => $this->faker->dateTimeBetween('-2 year', 'now'),
             'ended_at' => $this->faker->dateTimeBetween('-2 year', 'now'),
             'url' => $this->faker->url,
             'corporation_id' => function () {
