@@ -19,9 +19,12 @@ use App\Http\Controllers\DocumentController;
 |
 */
 
-Route::apiResource('companies', CompanyController::class);
-Route::apiResource('contacts', ContactController::class);
-Route::apiResource('contracts', ContractController::class);
-Route::apiResource('corporations', CorporationController::class);
-Route::apiResource('documents', DocumentController::class);
-Route::apiResource('users', UserController::class);
+Route::middleware(['auth:api'])->group(function () {
+    Route::apiResource('companies', CompanyController::class);
+    Route::apiResource('contacts', ContactController::class);
+    Route::apiResource('contracts', ContractController::class);
+    Route::apiResource('corporations', CorporationController::class);
+    Route::apiResource('documents', DocumentController::class);
+    Route::apiResource('users', UserController::class);
+});
+
