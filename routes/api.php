@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CorporationDocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
@@ -36,6 +37,9 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::apiResource('documents', DocumentController::class)
         ->middleware(['scope:documents']);
+
+    Route::apiResource('corporation-document', CorporationDocumentController::class)
+        ->middleware(['scope:corporation-document']);
 
     Route::apiResource('users', UserController::class)
         ->middleware(['scope:users']);
