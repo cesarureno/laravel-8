@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request): JsonResponse
     {
-        $company = Company::create($request->all());
+        $company = Company::create($request->validated());
 
         return response()->success(['company' => $company]);
     }
@@ -54,7 +54,7 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Company $company): JsonResponse
     {
-        $company->update($request->all());
+        $company->update($request->validated());
 
         return response()->success(['company' => $company]);
     }

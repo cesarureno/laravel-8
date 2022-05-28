@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CorporationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +18,4 @@ use App\Http\Controllers\CompanyController;
 
 Route::apiResource('users', UserController::class);
 Route::apiResource('companies', CompanyController::class);
+Route::apiResource('corporations', CorporationController::class);

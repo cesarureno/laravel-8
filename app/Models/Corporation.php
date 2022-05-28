@@ -21,13 +21,13 @@ class Corporation extends Model
     protected $fillable = [
         'name',
         'business_name',
-        'logo',
         'db_name',
         'db_user',
         'db_password',
         'system_url',
         'status',
         'registered_at',
+        'user_id'
     ];
 
     /**

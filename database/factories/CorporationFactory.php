@@ -25,7 +25,6 @@ class CorporationFactory extends Factory
         return [
             'name' => $this->faker->company,
             'business_name' => $this->faker->company,
-            'logo' => $this->faker->imageUrl(200, 200),
             'db_name' => $this->faker->userName,
             'db_user' => $this->faker->userName,
             'db_password' => $this->faker->password,
