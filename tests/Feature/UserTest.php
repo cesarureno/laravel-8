@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -23,11 +24,16 @@ class UserTest extends TestCase
 
         $users = User::factory(10)->create();
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['users']
+        );
+
         $response = $this->get('/api/users');
 
         $response->assertOk();
 
-        $this->assertCount(10, User::all());
+        $this->assertCount(11, User::all());
 
         $response->assertJsonStructure([
             'msg',
@@ -52,11 +58,16 @@ class UserTest extends TestCase
 
         $user = User::factory()->make();
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['users']
+        );
+
         $response = $this->post('/api/users', $user->toArray());
 
         $response->assertOk();
 
-        $this->assertCount(1, User::all());
+        $this->assertCount(2, User::all());
 
         $response->assertJsonStructure([
             'msg',
@@ -79,15 +90,21 @@ class UserTest extends TestCase
     {
         $this->withExceptionHandling();
 
+
         User::factory()->create();
 
         $user = User::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['users']
+        );
 
         $response = $this->get("/api/users/{$user->id}");
 
         $response->assertOk();
 
-        $this->assertCount(1, User::all());
+        $this->assertCount(2, User::all());
 
         $response->assertJsonStructure([
             'msg',
@@ -116,11 +133,16 @@ class UserTest extends TestCase
         $user_factory = User::factory()->make();
         $user->fill($user_factory->toArray());
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['users']
+        );
+
         $response = $this->put("/api/users/{$user->id}", $user->toArray());
 
         $response->assertOk();
 
-        $this->assertCount(1, User::all());
+        $this->assertCount(2, User::all());
 
         $response->assertJsonStructure([
             'msg',
@@ -147,11 +169,16 @@ class UserTest extends TestCase
 
         $user = User::first();
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['users']
+        );
+
         $response = $this->delete("/api/users/{$user->id}");
 
         $response->assertOk();
 
-        $this->assertCount(0, User::all());
+        $this->assertCount(1, User::all());
 
         $response->assertJsonStructure([
             'msg',

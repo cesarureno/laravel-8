@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Contract;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class ContractTest extends TestCase
@@ -22,6 +24,11 @@ class ContractTest extends TestCase
         $this->withExceptionHandling();
 
         $contracts = Contract::factory(10)->create();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contracts']
+        );
 
         $response = $this->get('/api/contracts');
 
@@ -51,6 +58,11 @@ class ContractTest extends TestCase
         $this->withExceptionHandling();
 
         $contract = Contract::factory()->make();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contracts']
+        );
 
         $response = $this->post('/api/contracts', $contract->toArray());
 
@@ -82,6 +94,11 @@ class ContractTest extends TestCase
         Contract::factory()->create();
 
         $contract = Contract::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contracts']
+        );
 
         $response = $this->get("/api/contracts/{$contract->id}");
 
@@ -116,6 +133,11 @@ class ContractTest extends TestCase
         $contract_factory = Contract::factory()->make();
         $contract->fill($contract_factory->toArray());
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contracts']
+        );
+
         $response = $this->put("/api/contracts/{$contract->id}", $contract->toArray());
 
         $response->assertOk();
@@ -146,6 +168,11 @@ class ContractTest extends TestCase
         Contract::factory()->create();
 
         $contract = Contract::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contracts']
+        );
 
         $response = $this->delete("/api/contracts/{$contract->id}");
 

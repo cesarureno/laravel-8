@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class ContactTest extends TestCase
@@ -22,6 +24,11 @@ class ContactTest extends TestCase
         $this->withExceptionHandling();
 
         $contacts = Contact::factory(10)->create();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contacts']
+        );
 
         $response = $this->get('/api/contacts');
 
@@ -51,6 +58,11 @@ class ContactTest extends TestCase
         $this->withExceptionHandling();
 
         $contact = Contact::factory()->make();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contacts']
+        );
 
         $response = $this->post('/api/contacts', $contact->toArray());
 
@@ -82,6 +94,11 @@ class ContactTest extends TestCase
         Contact::factory()->create();
 
         $contact = Contact::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contacts']
+        );
 
         $response = $this->get("/api/contacts/{$contact->id}");
 
@@ -116,6 +133,11 @@ class ContactTest extends TestCase
         $contact_factory = Contact::factory()->make();
         $contact->fill($contact_factory->toArray());
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contacts']
+        );
+
         $response = $this->put("/api/contacts/{$contact->id}", $contact->toArray());
 
         $response->assertOk();
@@ -146,6 +168,11 @@ class ContactTest extends TestCase
         Contact::factory()->create();
 
         $contact = Contact::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['contacts']
+        );
 
         $response = $this->delete("/api/contacts/{$contact->id}");
 

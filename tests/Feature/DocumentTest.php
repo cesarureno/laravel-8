@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Document;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class DocumentTest extends TestCase
@@ -22,6 +24,11 @@ class DocumentTest extends TestCase
         $this->withExceptionHandling();
 
         $documents = Document::factory(10)->create();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['documents']
+        );
 
         $response = $this->get('/api/documents');
 
@@ -51,6 +58,11 @@ class DocumentTest extends TestCase
         $this->withExceptionHandling();
 
         $document = Document::factory()->make();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['documents']
+        );
 
         $response = $this->post('/api/documents', $document->toArray());
 
@@ -82,6 +94,11 @@ class DocumentTest extends TestCase
         Document::factory()->create();
 
         $document = Document::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['documents']
+        );
 
         $response = $this->get("/api/documents/{$document->id}");
 
@@ -116,6 +133,11 @@ class DocumentTest extends TestCase
         $document_factory = Document::factory()->make();
         $document->fill($document_factory->toArray());
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['documents']
+        );
+
         $response = $this->put("/api/documents/{$document->id}", $document->toArray());
 
         $response->assertOk();
@@ -146,6 +168,11 @@ class DocumentTest extends TestCase
         Document::factory()->create();
 
         $document = Document::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['documents']
+        );
 
         $response = $this->delete("/api/documents/{$document->id}");
 
