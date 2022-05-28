@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Corporation;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 
 class BackupDatabase extends Command
 {
@@ -45,6 +46,8 @@ class BackupDatabase extends Command
             $this->info('Corporation created successfully');
 
             $this->info('Creating backup...');
+
+            File::ensureDirectoryExists(storage_path() . "/app/backups/");
 
             $command = "mysqldump -u " . config('database.connections.mysql.username')
                 . " -p" . config('database.connections.mysql.password') . " "
