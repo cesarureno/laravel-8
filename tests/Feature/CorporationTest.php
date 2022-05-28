@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Corporation;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class CorporationTest extends TestCase
@@ -22,6 +24,11 @@ class CorporationTest extends TestCase
         $this->withExceptionHandling();
 
         $corporations = Corporation::factory(10)->create();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['corporations']
+        );
 
         $response = $this->get('/api/corporations');
 
@@ -51,6 +58,11 @@ class CorporationTest extends TestCase
         $this->withExceptionHandling();
 
         $corporation = Corporation::factory()->make();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['corporations']
+        );
 
         $response = $this->post('/api/corporations', $corporation->toArray());
 
@@ -82,6 +94,11 @@ class CorporationTest extends TestCase
         Corporation::factory()->create();
 
         $corporation = Corporation::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['corporations']
+        );
 
         $response = $this->get("/api/corporations/{$corporation->id}");
 
@@ -116,6 +133,11 @@ class CorporationTest extends TestCase
         $corporation_factory = Corporation::factory()->make();
         $corporation->fill($corporation_factory->toArray());
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['corporations']
+        );
+
         $response = $this->put("/api/corporations/{$corporation->id}", $corporation->toArray());
 
         $response->assertOk();
@@ -146,6 +168,11 @@ class CorporationTest extends TestCase
         Corporation::factory()->create();
 
         $corporation = Corporation::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['corporations']
+        );
 
         $response = $this->delete("/api/corporations/{$corporation->id}");
 

@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class CompanyTest extends TestCase
@@ -22,6 +24,11 @@ class CompanyTest extends TestCase
         $this->withExceptionHandling();
 
         $companies = Company::factory(10)->create();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['companies']
+        );
 
         $response = $this->get('/api/companies');
 
@@ -51,6 +58,11 @@ class CompanyTest extends TestCase
         $this->withExceptionHandling();
 
         $company = Company::factory()->make();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['companies']
+        );
 
         $response = $this->post('/api/companies', $company->toArray());
 
@@ -82,6 +94,11 @@ class CompanyTest extends TestCase
         Company::factory()->create();
 
         $company = Company::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['companies']
+        );
 
         $response = $this->get("/api/companies/{$company->id}");
 
@@ -116,6 +133,11 @@ class CompanyTest extends TestCase
         $company_factory = Company::factory()->make();
         $company->fill($company_factory->toArray());
 
+        Passport::actingAs(
+            User::factory()->create(),
+            ['companies']
+        );
+
         $response = $this->put("/api/companies/{$company->id}", $company->toArray());
 
         $response->assertOk();
@@ -146,6 +168,11 @@ class CompanyTest extends TestCase
         Company::factory()->create();
 
         $company = Company::first();
+
+        Passport::actingAs(
+            User::factory()->create(),
+            ['companies']
+        );
 
         $response = $this->delete("/api/companies/{$company->id}");
 
