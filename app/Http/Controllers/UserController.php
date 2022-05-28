@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): JsonResponse
     {
-        $user = User::create($request->all());
+        $user = User::create($request->validated());
 
         return response()->success(['user' => $user]);
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user): JsonResponse
     {
-        $user->update($request->all());
+        $user->update($request->validated());
 
         return response()->success(['user' => $user]);
     }

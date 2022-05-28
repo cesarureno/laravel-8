@@ -23,7 +23,7 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'business_name' => $this->faker->company,
+            'business_name' => $this->faker->company(),
             'rfc' => $this->faker->regexify('[A-Z]{4}[0-9]{6}[A-Z0-9]{3}'),
             'country' => $this->faker->country,
             'state' => $this->faker->state,
