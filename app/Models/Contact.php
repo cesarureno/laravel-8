@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contact extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -23,10 +22,17 @@ class Contact extends Model
         'phone_number',
         'mobile_phone_number',
         'email',
-        'corporate_id',
+        'corporation_id',
     ];
 
-    public function corporate()
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    public function corporation()
     {
         return $this->belongsTo(Corporation::class);
     }
