@@ -12,7 +12,6 @@ class AuthController extends Controller
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials)) {
-
             $user = Auth::user();
 
             $scopes = ['users'];
@@ -32,8 +31,7 @@ class AuthController extends Controller
             $success['access_token'] = $user->createToken('Laravel 8', $scopes)->accessToken;
 
             return response()->json($success, 200);
-        }
-        else {
+        } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
     }
