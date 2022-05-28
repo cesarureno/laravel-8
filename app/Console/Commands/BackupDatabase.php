@@ -40,7 +40,7 @@ class BackupDatabase extends Command
      */
     public function handle()
     {
-        if(config('database.backup.mode') == 'both' || config('database.backup.mode') == 'manual') {
+        if (config('database.backup.mode') == 'both' || config('database.backup.mode') == 'manual') {
             Corporation::factory()->create();
 
             $this->info('Corporation created successfully');
@@ -59,8 +59,7 @@ class BackupDatabase extends Command
             exec($command);
 
             $this->info('Backup created successfully!');
-        }
-        else {
+        } else {
             $this->info('Backup manual mode is disabled');
         }
 
