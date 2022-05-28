@@ -6,7 +6,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CorporationController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\ContactController;
-use \App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
