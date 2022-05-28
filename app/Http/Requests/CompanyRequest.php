@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CompanyRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'rfc' => 'required|max:13|unique:companies',
+            'rfc' => ['required', 'max:13', Rule::unique('companies')->ignore($this->company)],
             'business_name' => 'required|string|max:150',
             'country' => 'required|string|max:75',
             'state' => 'required|string|max:75',

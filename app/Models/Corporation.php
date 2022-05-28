@@ -45,7 +45,7 @@ class Corporation extends Model
      *******************************************************************************************/
 
     /**
-     * Get the user associated with the comporate.
+     * Get the user associated with the corporation.
      */
     public function user(): BelongsTo
     {
@@ -53,7 +53,7 @@ class Corporation extends Model
     }
 
     /**
-     * Get the companies associated with the corporate.
+     * Get the companies associated with the corporation.
      */
     public function companies(): HasMany
     {
@@ -61,7 +61,7 @@ class Corporation extends Model
     }
 
     /**
-     * Get the contacts associated with the corporate.
+     * Get the contacts associated with the corporation.
      */
     public function contacts(): HasMany
     {
@@ -69,7 +69,7 @@ class Corporation extends Model
     }
 
     /**
-     * Get the contracts associated with the corporate.
+     * Get the contracts associated with the corporation.
      */
     public function contracts(): HasMany
     {
@@ -77,7 +77,7 @@ class Corporation extends Model
     }
 
     /**
-     * Get the corporation document associated with the corporate.
+     * Get the corporation document associated with the corporation.
      */
     public function corporationDocument(): HasMany
     {

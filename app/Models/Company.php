@@ -80,6 +80,13 @@ class Company extends Model
         'corporation_id'
     ];
 
+    /*******************************************************************************************
+     * RELATIONSHIPS
+     *******************************************************************************************/
+
+    /**
+     * Get the corporation associated with the company.
+     */
     public function corporation(): BelongsTo
     {
         return $this->belongsTo(Corporation::class);

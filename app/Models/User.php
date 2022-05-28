@@ -100,9 +100,9 @@ class User extends Authenticatable
      *******************************************************************************************/
 
     /**
-     * Get the corporate associated with the user.
+     * Get the corporation associated with the user.
      */
-    public function corporate(): HasOne
+    public function corporation(): HasOne
     {
         return $this->hasOne(Corporation::class);
     }

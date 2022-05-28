@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
                 'msg' => 'BAD',
                 'success' => false,
                 'data' => [
-                    'msgError' => $e->getMessage(),
+                    'msgError' => method_exists($e, 'errors') ? $e->errors() : $e->getMessage(),
                 ],
                 'exception' => [
                     'msgError' => $e->getMessage(),

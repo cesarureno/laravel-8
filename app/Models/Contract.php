@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Contract extends Model
 {
@@ -27,4 +29,16 @@ class Contract extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /*******************************************************************************************
+     * RELATIONSHIPS
+     *******************************************************************************************/
+
+    /**
+     * Get the corporation associated with the contract.
+     */
+    public function corporation(): BelongsTo
+    {
+        return $this->belongsTo(Corporation::class);
+    }
 }
