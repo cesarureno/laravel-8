@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Artisan;
 
 class UserController extends Controller
 {
@@ -69,5 +70,17 @@ class UserController extends Controller
         $user->delete();
 
         return response()->success(['user' => $user]);
+    }
+
+
+    public function backupDatabase()
+    {
+        if(config('database.backup.mode') == 'both' || config('database.backup.mode') == 'manual') {
+            Artisan::command('database:backup', function () {});
+
+            return response()->success(['message' => 'Database backup created successfully']);
+        }
+
+        return response()->error(['message' => 'Backup mode is not set to manual'], 400, "Error creating backup");
     }
 }

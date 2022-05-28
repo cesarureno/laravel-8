@@ -39,4 +39,6 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::apiResource('users', UserController::class)
         ->middleware(['scope:users']);
+
+    Route::post('database/backup', [UserController::class, 'backupDatabase']);
 });
