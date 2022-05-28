@@ -38,7 +38,7 @@ class AuthServiceProvider extends ServiceProvider
             'contracts' => 'Contracts',
             'contacts' => 'Contacts',
             'documents' => 'Documents',
-            'corporation-documents' => 'Corporation Documents',
+            'corporation-document' => 'Corporation Documents',
             'users' => 'Usuarios',
         ]);
     }

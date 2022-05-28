@@ -24,13 +24,14 @@ class AuthController extends Controller
                     array_push($scopes, 'contacts', 'contracts');
                     break;
                 case 3:
-                    array_push($scopes, 'documents', 'corporation-documents');
+                    array_push($scopes, 'documents', 'corporation-document');
                     break;
             }
 
-            $success['access_token'] = $user->createToken('Laravel 8', $scopes)->accessToken;
+            $data['user'] = $user;
+            $data['access_token'] = $user->createToken('Laravel 8', $scopes)->accessToken;
 
-            return response()->json($success, 200);
+            return response()->json($data, 200);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
